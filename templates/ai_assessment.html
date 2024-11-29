@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Knowledge Assessment</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ 40 }}%;"></div>
+    </div>
+
+    <h1>AI Knowledge Assessment</h1>
+    <form action="/ai_assessment" method="POST">
+        <label for="ai_knowledge">How would you rate your AI knowledge?</label>
+        <select name="ai_knowledge">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

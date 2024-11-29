@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Use Case Discovery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .progress-bar {
+            width: 80%;
+            max-width: 1000px;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #81d4fa, #42a5f5);
+            width: {{ progress }}%;
+            transition: width 0.6s ease-out;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin: 10px 0 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        label {
+            font-size: 1rem;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #4CAF50;
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+            width: 100%;
+            max-width: 800px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            textarea {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ 60 }}%;"></div>
+    </div>
+
+    <div class="container">
+        <h1>Discover AI Use Cases for Your Business</h1>
+        <p>Select the AI use cases that align with your business operations and provide additional details to help us build a tailored roadmap.</p>
+
+        <form action="/use_case_discovery" method="POST">
+            <h3>Operations and Logistics</h3>
+            <div class="checkbox-group">
+                <input type="checkbox" id="predictive_maintenance" name="use_case" value="predictive_maintenance">
+                <label for="predictive_maintenance">Predictive Maintenance</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="automation" name="use_case" value="automation">
+                <label for="automation">Process Automation</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="supply_chain" name="use_case" value="supply_chain">
+                <label for="supply_chain">Supply Chain Optimization</label>
+            </div>
+
+            <h3>Sales and Customer Service</h3>
+            <div class="checkbox-group">
+                <input type="checkbox" id="chatbots" name="use_case" value="chatbots">
+                <label for="chatbots">Chatbots and Virtual Assistants</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="recommendations" name="use_case" value="recommendations">
+                <label for="recommendations">Personalized Product Recommendations</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="sales_forecasting" name="use_case" value="sales_forecasting">
+                <label for="sales_forecasting">Lead Scoring and Sales Forecasting</label>
+            </div>
+
+            <h3>Finance and Risk Management</h3>
+            <div class="checkbox-group">
+                <input type="checkbox" id="fraud_detection" name="use_case" value="fraud_detection">
+                <label for="fraud_detection">Fraud Detection</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="financial_forecasting" name="use_case" value="financial_forecasting">
+                <label for="financial_forecasting">Financial Forecasting</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="compliance" name="use_case" value="compliance">
+                <label for="compliance">Risk Assessment and Compliance Automation</label>
+            </div>
+
+            <h3>Marketing and Personalization</h3>
+            <div class="checkbox-group">
+                <input type="checkbox" id="marketing_campaigns" name="use_case" value="marketing_campaigns">
+                <label for="marketing_campaigns">Personalized Marketing Campaigns</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="customer_segmentation" name="use_case" value="customer_segmentation">
+                <label for="customer_segmentation">Customer Segmentation</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="sentiment_analysis" name="use_case" value="sentiment_analysis">
+                <label for="sentiment_analysis">Sentiment Analysis</label>
+            </div>
+
+            <label for="custom_use_case">Have a specific use case in mind? Describe it below:</label>
+            <textarea id="custom_use_case" name="custom_use_case" placeholder="e.g., Automating compliance reporting"></textarea><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

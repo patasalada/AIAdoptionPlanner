@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Onboarding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .progress-bar {
+            width: 80%; /* Adjusted for larger screens */
+            max-width: 1000px;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #81d4fa, #42a5f5);
+            width: {{ progress }}%;
+            transition: width 0.6s ease-out;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin: 10px 0 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            max-width: 800px;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .prompt {
+            text-align: left;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .prompt p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            input, textarea, select {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ 20 }}%;"></div>
+    </div>
+
+    <!-- Onboarding Form Container -->
+    <div class="container">
+        <h1>Let's Get to Know Your Business</h1>
+        <p>This information will help us tailor AI recommendations and create a roadmap just for you.</p>
+
+        <form action="/onboarding" method="POST">
+            <label for="company_name">Company Name:</label>
+            <input type="text" id="company_name" name="company_name" required>
+
+            <label for="industry">Industry:</label>
+            <input type="text" id="industry" name="industry" required>
+
+            <label for="size">Company Size:</label>
+            <input type="number" id="size" name="size" min="1" required>
+
+            <label for="tools">Current Technology Stack (ERP, CRM, IoT, etc.):</label>
+            <input type="text" id="tools" name="technology_stack" placeholder="List your current tools" required>
+
+            <div class="prompt">
+                <p><strong>What do you hope to achieve with AI?</strong></p>
+                <p>Think about areas where processes take too long, errors happen frequently, or opportunities for growth are being missed. How could smarter tools or automation improve these areas?</p>
+            </div>
+            <textarea id="ai_achievements" name="ai_achievements" rows="4" placeholder="Describe your goals for AI adoption" required></textarea>
+
+            <div class="prompt">
+                <p><strong>What are the biggest bottlenecks or inefficiencies your company is currently facing?</strong></p>
+                <p>Think about areas where processes take too long, errors happen frequently, or opportunities for growth are being missed.</p>
+            </div>
+            <textarea id="bottlenecks" name="bottlenecks" rows="4" placeholder="Describe the bottlenecks in your business" required></textarea>
+
+            <label for="company_goals"><strong>What are your overall business goals for the next 1-3 years?</strong></label>
+            <textarea id="company_goals" name="business_goals_1_3_years" rows="4" placeholder="e.g., Expand into new markets, improve customer retention, achieve operational efficiency" required></textarea>
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>

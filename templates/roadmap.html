@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Adoption Roadmap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 90%;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .thank-you-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #4CAF50;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your AI Adoption Roadmap</h1>
+        <div id="intro-text">
+            <p>We are almost there! Please provide your name and email to receive your custom roadmap.</p>
+        </div>
+
+        <form id="user-info-form" action="/generate_pdf" method="POST">
+            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="thank-you-message" class="thank-you-message">
+            <h2>Thank You!</h2>
+            <p>Your custom AI adoption roadmap is being prepared. You will receive it at the email address you provided shortly.</p>
+        </div>
+    </div>
+
+    <script>
+        // Handle form submission and display thank you message
+        const form = document.getElementById('user-info-form');
+        const thankYouMessage = document.getElementById('thank-you-message');
+        const introText = document.getElementById('intro-text');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            introText.style.display = 'none';
+            form.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

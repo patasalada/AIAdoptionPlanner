@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Readiness Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Universal Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .progress-bar {
+            width: 80%;
+            max-width: 1000px;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #81d4fa, #42a5f5);
+            width: {{ progress }}%;
+            transition: width 0.6s ease-out;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.1rem;
+            margin: 10px 0 20px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            align-items: center;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            max-width: 800px;
+            padding: 15px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            input, textarea, select {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: {{ 40 }}%;"></div>
+    </div>
+
+    <div class="container">
+        <h1>AI Readiness Assessment</h1>
+        <p>Please provide detailed answers to the questions below. This information will help us tailor a personalized AI adoption roadmap for your business.</p>
+
+        <form action="/readiness_assessment" method="POST">
+    <label for="data_challenges">1. What challenges do you face in managing and integrating your data for AI projects?</label>
+    <textarea id="data_challenges" name="data_challenges" rows="4" placeholder="e.g., Data silos, security risks, lack of real-time access" required></textarea>
+
+    <label for="ai_tools">2. Do you currently use any AI-specific tools or platforms?</label>
+    <textarea id="ai_tools" name="ai_tools" rows="4" placeholder="e.g., TensorFlow, IBM Watson, Microsoft Azure AI" required></textarea>
+
+    <label for="tech_gaps">3. What gaps exist in your technology stack that may prevent successful AI implementation?</label>
+    <textarea id="tech_gaps" name="tech_gaps" rows="4" placeholder="e.g., Limited API access, missing cloud infrastructure" required></textarea>
+
+    <label for="ai_skills">4. What is the current level of AI expertise in your organization?</label>
+    <select id="ai_skills" name="ai_skills" required>
+        <option value="expert">Expert - Dedicated AI/data science team</option>
+        <option value="intermediate">Intermediate - Some knowledge, limited experience</option>
+        <option value="novice">Novice - No in-house expertise</option>
+    </select>
+
+    <label for="training_plan">5. Do you have a plan to upskill employees in AI-related areas?</label>
+    <select id="training_plan" name="training_plan" required>
+        <option value="yes">Yes - Active training programs in place</option>
+        <option value="planned">Planned - In development</option>
+        <option value="no">No - No plans currently</option>
+    </select>
+
+    <label for="leadership_support">6. How committed is leadership to supporting AI initiatives?</label>
+    <select id="leadership_support" name="leadership_support" required>
+        <option value="high">Highly committed</option>
+        <option value="moderate">Moderately committed</option>
+        <option value="low">Not committed</option>
+    </select>
+
+    <label for="change_management">7. What is your organization’s experience with managing large-scale change initiatives?</label>
+    <textarea id="change_management" name="change_management" rows="4" placeholder="e.g., Successful ERP rollout, challenges with digital transformation" required></textarea>
+
+    <label for="ai_budget">8. What budget has been allocated for AI projects?</label>
+    <textarea id="ai_budget" name="ai_budget" rows="3" placeholder="e.g., $50,000 for pilot projects, more available if successful" required></textarea>
+
+    <label for="resource_constraints">9. Are there any resource constraints (staff, time, tools) that could impact AI adoption?</label>
+    <textarea id="resource_constraints" name="resource_constraints" rows="3" placeholder="e.g., Limited staff, no AI consultants, tight deadlines" required></textarea>
+
+    <label for="readiness_score">10. On a scale of 0 to 100, how ready is your organization for AI adoption?</label>
+    <input type="number" id="readiness_score" name="readiness_score" min="0" max="100" required>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+    </div>
+</body>
+</html>
